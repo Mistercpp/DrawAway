@@ -116,6 +116,7 @@
                 android:layout_marginRight="25dip"
                 android:onClick="onRaz" />
         </LinearLayout>
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

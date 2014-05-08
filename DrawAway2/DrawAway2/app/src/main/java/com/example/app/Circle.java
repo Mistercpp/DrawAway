@@ -23,7 +23,6 @@ public class Circle extends Figure {
     }
     @Override
     public void create(Canvas canvas, Paint paint) {
-        canvas.drawColor(Color.CYAN);
         Paint p = new Paint();
         // smooths
         p.setAntiAlias(true);

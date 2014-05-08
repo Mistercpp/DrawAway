@@ -25,6 +25,9 @@ public class MainActivity extends ActionBarActivity {
     EditText largeur;
     EditText hauteur;
 
+    public static boolean boolRectangle = false;
+//    public static boolean boolTriangle;
+//    public static boolean boolRond;
 
 
     //share all informations with other classes (public static variables)
@@ -70,8 +73,8 @@ public class MainActivity extends ActionBarActivity {
         //get the View
         calque  = (GeometryLayer)findViewById(R.id.calque_dessin);
 
-       //initialize the array of figures
-       initAvailableForms();
+        //initialize the array of figures
+        initAvailableForms();
 
         //initilize touch event
         final View touchView = findViewById(R.id.calque_dessin);
@@ -82,6 +85,23 @@ public class MainActivity extends ActionBarActivity {
                 //get informations
                 int Xpos = (int) motionEvent.getX();
                 int Ypos = (int) motionEvent.getY();
+
+                if(boolRectangle){
+                    Figure form;
+                    if (figure.equals("Rectangle")) {
+
+                        int ilargeur = Integer.parseInt(largeur.getText().toString());
+                        int ihauteur = Integer.parseInt(hauteur.getText().toString());
+
+                        form = new Rectangle(ilargeur,ihauteur,Xpos,Ypos);
+                        form.setX(Xpos);
+                        form.setY(Ypos);
+                        calque.addFigure(form);
+                        boolRectangle = false;
+                    }
+                }
+
+
 
                 TextView Xtext = (TextView)findViewById(R.id.x);
                 Xtext.setText("X : "+Xpos);
@@ -108,11 +128,14 @@ public class MainActivity extends ActionBarActivity {
         Figure form;
 
         if (figure.equals("Rectangle")) {
-            form = new Rectangle(ilargeur,ihauteur,X,Y);
+
+            boolRectangle = true;
+            /*form = new Rectangle(ilargeur,ihauteur,X,Y);
             form.setX(X);
-            form.setY(Y);
-            calque.addFigure(form);
-        } else if (figure.equals("Cercle")) {
+            form.setY(y);
+            calque.addFigure(form);*/
+        } else
+        if (figure.equals("Cercle")) {
             form = new Circle(X,Y,ihauteur);
             form.setX(X);
             form.setY(Y);
@@ -125,37 +148,4 @@ public class MainActivity extends ActionBarActivity {
         }
 
     }
-
-
-
-
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.main, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-        if (id == R.id.action_settings) {
-            return true;
-        }
-        return super.onOptionsItemSelected(item);
-    }
-
-
-
-    public void onRaz(View view) {
-        calque.cleanSlate();
-    }
-
-
-
 }
