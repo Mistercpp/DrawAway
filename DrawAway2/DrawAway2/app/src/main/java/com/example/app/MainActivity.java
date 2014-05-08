@@ -25,6 +25,9 @@ public class MainActivity extends ActionBarActivity {
     EditText largeur;
     EditText hauteur;
 
+    public static boolean boolRectangle = false;
+//    public static boolean boolTriangle;
+//    public static boolean boolRond;
 
 
     //share all informations with other classes (public static variables)
@@ -83,6 +86,23 @@ public class MainActivity extends ActionBarActivity {
                 int Xpos = (int) motionEvent.getX();
                 int Ypos = (int) motionEvent.getY();
 
+                if(boolRectangle){
+                    Figure form;
+                    if (figure.equals("Rectangle")) {
+
+                        int ilargeur = Integer.parseInt(largeur.getText().toString());
+                        int ihauteur = Integer.parseInt(hauteur.getText().toString());
+
+                        form = new Rectangle(ilargeur,ihauteur,Xpos,Ypos);
+                        form.setX(Xpos);
+                        form.setY(Ypos);
+                        calque.addFigure(form);
+                        boolRectangle = false;
+                    }
+                }
+
+
+
                 TextView Xtext = (TextView)findViewById(R.id.x);
                 Xtext.setText("X : "+Xpos);
                 X = Xpos;
@@ -108,11 +128,14 @@ public class MainActivity extends ActionBarActivity {
         Figure form;
 
         if (figure.equals("Rectangle")) {
-            form = new Rectangle(ilargeur,ihauteur,X,Y);
+
+            boolRectangle = true;
+            /*form = new Rectangle(ilargeur,ihauteur,X,Y);
             form.setX(X);
             form.setY(Y);
-            calque.addFigure(form);
-        } else if (figure.equals("Cercle")) {
+            calque.addFigure(form);*/
+        } else
+            if (figure.equals("Cercle")) {
             form = new Circle(X,Y,ihauteur);
             form.setX(X);
             form.setY(Y);

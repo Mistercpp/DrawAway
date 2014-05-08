@@ -56,16 +56,6 @@ public class GeometryLayer extends View {
         //draw the list of Figure
         for(Figure f : Listfigure){
             f.create(canvas, myPaint);
-            if(figure.equals("Triangle"))
-            {
-                Path tri = new Path();
-                tri.moveTo(0,f.getX());
-                tri.lineTo(f.getX()/2,0);
-                tri.lineTo(f.getX(),f.getY());
-                tri.lineTo(0,f.getY());
-                tri.close();
-                canvas.drawPath(tri, myPaint);
-            }
         }
     }
 

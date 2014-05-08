@@ -3,14 +3,23 @@ package com.example.app;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.graphics.Path;
+import android.util.Log;
 
 /**
  * Created by Hor on 06/05/14.
  */
 public class Triangle extends Figure {
 
-    public void create(Canvas canvas, Paint paint) {
-        canvas.drawColor(Color.CYAN);
+    public void create(Canvas canvas, Paint paint){
+
+        Path tri = new Path();
+        tri.moveTo(0 ,this.getY());
+        tri.lineTo(this.getX()/2 , 0);
+        tri.lineTo(this.getX(),this.getY());
+        tri.lineTo(0 ,this.getY());
+        tri.close();
+        canvas.drawPath(tri, paint);
 
     }
 
