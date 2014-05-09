@@ -12,12 +12,12 @@ import android.util.Log;
 public class Triangle extends Figure {
 
     public void create(Canvas canvas, Paint paint){
-
+        //pour le cas du triangle les point sont construit par rapport au centre
         Path tri = new Path();
-        tri.moveTo(0 ,this.getY());
-        tri.lineTo(this.getX()/2 , 0);
-        tri.lineTo(this.getX(),this.getY());
-        tri.lineTo(0 ,this.getY());
+        tri.moveTo(this.getX()-(this._base/2) ,this.getY()+(this._hauteur/2));
+        tri.lineTo(this.getX() , this.getY()-(this._hauteur/2));
+        tri.lineTo(this.getX()+(this._base/2) ,this.getY()+(this._hauteur/2));
+        tri.lineTo(this.getX()-(this._base/2) ,this.getY()+(this._hauteur/2));
         tri.close();
         canvas.drawPath(tri, paint);
 
@@ -25,16 +25,15 @@ public class Triangle extends Figure {
 
     int _x;
     int _y;
-    int base;
-    int hauteur;
+    int _base;
+    int _hauteur;
 
 
-    public Triangle(int x, int y){
+    public Triangle(int x, int y,int base,int hauteur){
         _x = x;
         _y = y;
+        _base = base;
+        _hauteur = hauteur;
     }
 
-    public int getBase(){return base;}
-
-    public int getHauteur(){return hauteur;}
 }

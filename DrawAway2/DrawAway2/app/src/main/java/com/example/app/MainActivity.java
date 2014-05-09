@@ -25,9 +25,7 @@ public class MainActivity extends ActionBarActivity {
     EditText largeur;
     EditText hauteur;
 
-    public static boolean boolRectangle = false;
-//    public static boolean boolTriangle;
-//    public static boolean boolRond;
+    public static boolean boolDessin = false;
 
 
     //share all informations with other classes (public static variables)
@@ -82,33 +80,50 @@ public class MainActivity extends ActionBarActivity {
             @Override
             public boolean onTouch(View view, MotionEvent motionEvent) {
 
-                //get informations
+                //Coordonnées optenuent du tactile
                 int Xpos = (int) motionEvent.getX();
                 int Ypos = (int) motionEvent.getY();
 
-                if(boolRectangle){
-                    Figure form;
-                    if (figure.equals("Rectangle")) {
+                int ilargeur = 0;
+                int ihauteur = 0;
 
-                        int ilargeur = Integer.parseInt(largeur.getText().toString());
-                        int ihauteur = Integer.parseInt(hauteur.getText().toString());
-
-                        form = new Rectangle(ilargeur,ihauteur,Xpos,Ypos);
-                        form.setX(Xpos);
-                        form.setY(Ypos);
-                        calque.addFigure(form);
-                        boolRectangle = false;
-                    }
+                if(boolDessin == true){
+                    //Coordonnées taper
+                    largeur = (EditText)findViewById(R.id.largeur);
+                    hauteur = (EditText)findViewById(R.id.hauteur);
+                    ilargeur = Integer.parseInt(largeur.getText().toString());
+                    ihauteur = Integer.parseInt(hauteur.getText().toString());
                 }
 
 
-
-                TextView Xtext = (TextView)findViewById(R.id.x);
-                Xtext.setText("X : "+Xpos);
-                X = Xpos;
-                TextView Ytext = (TextView)findViewById(R.id.y);
-                Ytext.setText("Y : "+Ypos);
-                Y = Ypos;
+            if (figure.equals("Rectangle")) {
+                if(boolDessin == true){
+                    Figure form;
+                    form = new Rectangle(ilargeur,ihauteur,Xpos,Ypos);
+                    form.setX(Xpos);
+                    form.setY(Ypos);
+                    calque.addFigure(form);
+                    boolDessin = false;
+                }
+            }else if (figure.equals("Cercle")) {
+                if(boolDessin == true){
+                    Figure form;
+                    form = new Circle(Xpos,Ypos,ihauteur);
+                    form.setX(Xpos);
+                    form.setY(Ypos);
+                    calque.addFigure(form);
+                    boolDessin = false;
+                }
+            } else if (figure.equals("Triangle")) {
+                if(boolDessin == true){
+                    Figure form;
+                    form = new Triangle(Xpos, Ypos,ilargeur,ihauteur);
+                    form.setX(Xpos);
+                    form.setY(Ypos);
+                    calque.addFigure(form);
+                    boolDessin = false;
+                }
+            }
 
                 view.getId();
 
@@ -121,31 +136,9 @@ public class MainActivity extends ActionBarActivity {
 
 
     public void DrawFigure(View v) {
-        largeur = (EditText)findViewById(R.id.largeur);
-        hauteur = (EditText)findViewById(R.id.hauteur);
-        int ilargeur = Integer.parseInt(largeur.getText().toString());
-        int ihauteur = Integer.parseInt(hauteur.getText().toString());
-        Figure form;
 
-        if (figure.equals("Rectangle")) {
-
-            boolRectangle = true;
-            /*form = new Rectangle(ilargeur,ihauteur,X,Y);
-            form.setX(X);
-            form.setY(Y);
-            calque.addFigure(form);*/
-        } else
-            if (figure.equals("Cercle")) {
-            form = new Circle(X,Y,ihauteur);
-            form.setX(X);
-            form.setY(Y);
-            calque.addFigure(form);
-        } else if (figure.equals("Triangle")) {
-            form = new Triangle(X, Y);
-            form.setX(X);
-            form.setY(Y);
-            calque.addFigure(form);
-        }
+        //On passe le booleen a vrai et on donne le droit de dessiner
+        boolDessin = true;
 
     }
 
