@@ -20,7 +20,7 @@ import static java.lang.StrictMath.abs;
  * Created by Hor on 30/04/14.
  */
 public class GeometryLayer extends View {
-    ArrayList<Figure> Listfigure = new ArrayList<Figure>();
+    public static ArrayList<Figure> Listfigure = new ArrayList<Figure>();
     public GeometryLayer(Context context) {
         super(context);
     }

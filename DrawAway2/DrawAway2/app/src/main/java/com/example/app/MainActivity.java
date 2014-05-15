@@ -1,4 +1,9 @@
 package com.example.app;
+<<<<<<< HEAD
+=======
+
+import android.graphics.Canvas;
+>>>>>>> 846c270e514b221c55a428af1ae4a90d1a7dbe1a
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.support.v7.app.ActionBarActivity;
@@ -15,6 +20,47 @@ import android.widget.Toast;
 
 
 public class MainActivity extends ActionBarActivity {
+<<<<<<< HEAD
+=======
+    GeometryLayer calque;
+    String figure;
+    Spinner listForm = null;
+    private Button btnValider;
+    EditText largeur;
+    EditText hauteur;
+
+    //Booleen de vérouillage de bouton
+    public static boolean boolDessin = false;
+    public static boolean boolSupr = false;
+
+    private Figure figureEnCour;
+    public Figure figureTemp;
+
+    //Variable boite de dialogue des couleurs
+    private ColorPicker colorPicker;
+    private Button button;
+    public int rouge = 0;
+    public int vert = 0;
+    public int bleu = 0;
+
+    //share all informations with other classes (public static variables)
+    public static int X, Y;
+
+
+    //Fonction pour la boite de dialogue de selection de couleur
+    private void showColorPickerDialogDemo() {
+
+        int initialColor = Color.WHITE;
+
+        ColorPickerDialog colorPickerDialog = new ColorPickerDialog(this, initialColor, new ColorPickerDialog.OnColorSelectedListener() {
+
+            @Override
+            public void onColorSelected(int color) {
+                rouge = Color.red(color);
+                bleu = Color.blue(color);
+                vert = Color.green(color);
+            }
+>>>>>>> 846c270e514b221c55a428af1ae4a90d1a7dbe1a
 
         EditText largeur;
         EditText hauteur;
@@ -237,9 +283,52 @@ public class MainActivity extends ActionBarActivity {
 
                             view.getId();
 
+<<<<<<< HEAD
                             return true;
                         }
                     });
+=======
+                            //Si le boutton supprimer est actif alors on supprime
+                            if(boolSupr){
+                                calque.removeFigure(figureEnCour);
+                                boolSupr = false;
+                            }
+
+                        }
+                        else if (action==MotionEvent.ACTION_UP)
+                        {
+
+                            //Pour le déplacement de la figure la plus proche
+                            if(boolSupr!=true && boolDessin!=true){
+                                //Figure TMP = new Rectangle(100,100,(int)event.getX(),(int)event.getY(),new Paint());
+                                Figure TMP = figureEnCour;
+                                //System.out.println("toto "+figureEnCour.getX());
+
+
+
+
+                                TMP.setX((int) event.getX());
+                                TMP.setY((int) event.getY());
+
+
+                                System.out.println(TMP.getX()+" "+TMP.getY()+" "+(int) figureEnCour.getX()+" "+(int) figureEnCour.getY());
+
+                                //On supprime la figure passé
+                                calque.removeFigure(figureEnCour);
+
+                                //figureEnCour = figureTemp;
+                                calque.addFigure(TMP);
+                            }
+
+                        }
+                        else if (action==MotionEvent.ACTION_MOVE)
+                        {
+
+                        }
+
+                        return true;
+                    }
+>>>>>>> 846c270e514b221c55a428af1ae4a90d1a7dbe1a
                 }
 
 
