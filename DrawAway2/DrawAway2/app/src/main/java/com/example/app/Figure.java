@@ -19,7 +19,7 @@ public abstract class Figure {
     }
 
     public int getY() {
-        return Y;
+        return this.Y;
     }
 
     public void setY(int Y) {

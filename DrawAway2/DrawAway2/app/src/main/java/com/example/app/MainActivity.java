@@ -1,5 +1,6 @@
 package com.example.app;
 
+import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.support.v7.app.ActionBarActivity;
@@ -31,7 +32,7 @@ public class MainActivity extends ActionBarActivity {
     public static boolean boolDessin = false;
     public static boolean boolSupr = false;
 
-    public Figure figureEnCour;
+    private Figure figureEnCour;
     public Figure figureTemp;
 
     //Variable boite de dialogue des couleurs
@@ -187,29 +188,33 @@ public class MainActivity extends ActionBarActivity {
                         }
                         else if (action==MotionEvent.ACTION_UP)
                         {
-                            //myView.setBackgroundColor(Color.RED);
-                        }
-                        else if (action==MotionEvent.ACTION_MOVE)
-                        {
+
                             //Pour le déplacement de la figure la plus proche
-                            /*if(boolSupr!=true && boolDessin!=true){
-                                figureTemp = figureEnCour;
+                            if(boolSupr!=true && boolDessin!=true){
+                                //Figure TMP = new Rectangle(100,100,(int)event.getX(),(int)event.getY(),new Paint());
+                                Figure TMP = figureEnCour;
+                                //System.out.println("toto "+figureEnCour.getX());
 
-                                System.out.println("avant");
-                                System.out.println("x "+figureTemp.getX());
-                                System.out.println("y "+figureTemp.getY());
-                                figureTemp.setX(Xpos);
-                                figureTemp.setY(Ypos);
-                                System.out.println("apres");
-                                System.out.println("x "+figureTemp.getX());
-                                System.out.println("y "+figureTemp.getY());
 
+
+
+                                TMP.setX((int) event.getX());
+                                TMP.setY((int) event.getY());
+
+
+                                System.out.println(TMP.getX()+" "+TMP.getY()+" "+(int) figureEnCour.getX()+" "+(int) figureEnCour.getY());
 
                                 //On supprime la figure passé
                                 calque.removeFigure(figureEnCour);
+
                                 //figureEnCour = figureTemp;
-                                calque.addFigure(figureTemp);
-                            }*/
+                                calque.addFigure(TMP);
+                            }
+
+                        }
+                        else if (action==MotionEvent.ACTION_MOVE)
+                        {
+
                         }
 
                         return true;
