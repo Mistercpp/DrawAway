@@ -33,5 +33,5 @@ public abstract class Figure {
         Y = 0;
     }
 
-    public abstract void create(Canvas canvas, Paint paint);
+    public abstract void create(Canvas canvas);
 }

@@ -9,11 +9,11 @@
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:orientation="vertical">
-        <LinearLayout
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="153dp">
+
             <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -21,21 +21,20 @@
             android:textStyle="bold"
             android:textColor="#FF0000"
             android:gravity="center"
-            />
+                android:id="@+id/textView2" />
+
             <EditText
                 android:id="@+id/hauteur"
-                android:layout_width="fill_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:hint="Hauteur/Rayon"
                 android:inputType="numberDecimal"
-                android:layout_weight="1"
-                />
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            >
+                android:autoText="false"
+                android:text="0"
+                android:layout_alignBottom="@+id/valider"
+                android:layout_alignRight="@+id/largeur"
+                android:layout_alignEnd="@+id/largeur" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -43,53 +42,87 @@
                 android:textStyle="bold"
                 android:textColor="#FF0000"
                 android:gravity="center"
-                />
+                android:id="@+id/textView"
+                android:layout_below="@+id/valider"
+                android:layout_alignRight="@+id/textView2"
+                android:layout_alignEnd="@+id/textView2" />
+
             <EditText
                 android:id="@+id/largeur"
-                android:layout_width="fill_parent"
+                android:layout_width="149dp"
                 android:layout_height="wrap_content"
                 android:hint="Largeur"
                 android:inputType="numberDecimal"
-                android:layout_weight="1"
-                />
-        </LinearLayout>
+                android:text="0"
+                android:layout_alignBottom="@+id/couleur"
+                android:layout_alignRight="@+id/spin"
+                android:layout_alignEnd="@+id/spin" />
 
-        <Spinner
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/spin"
-            android:layout_gravity="right" />
+            <Spinner
+                android:layout_width="160dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/spin"
+                android:layout_below="@+id/largeur"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true" />
 
-        <LinearLayout
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            >
             <Button
                 android:id="@+id/valider"
-                android:layout_width="wrap_content"
+                android:layout_width="100dp"
                 android:layout_height="wrap_content"
-                android:text="VALIDER"
-                android:layout_weight="1"
-                android:layout_marginLeft="25dip"
-                android:layout_marginRight="25dip"
-                android:onClick="DrawFigure" />
+                android:text="Valider"
+                android:onClick="DrawFigure"
+                android:layout_weight="1.67"
+                android:layout_below="@+id/colorPicker"
+                android:layout_toRightOf="@+id/spin"
+                android:background="#27ff15" />
+
+            <Button
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:text="Couleur"
+                android:id="@+id/couleur"
+                android:layout_weight="0.36"
+                android:layout_below="@+id/valider"
+                android:layout_alignLeft="@+id/valider"
+                android:layout_alignStart="@+id/valider" />
+
             <Button
                 android:id="@+id/raz"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="Reset"
+                android:onClick="onRaz"
+                android:layout_below="@+id/valider"
+                android:layout_toRightOf="@+id/couleur" />
+
+            <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="RAZ"
-                android:layout_weight="1"
-                android:layout_marginLeft="25dip"
-                android:layout_marginRight="25dip"
-                android:onClick="onRaz" />
-        </LinearLayout>
+                android:text="Supprimer"
+                android:id="@+id/buttonSup"
+                android:onClick="SuprFigure"
+                android:background="@android:color/holo_red_light"
+                android:layout_alignParentTop="true"
+                android:layout_alignLeft="@+id/raz"
+                android:layout_alignStart="@+id/raz" />
 
-        <TextView
+            <com.example.app.ColorPicker
+                android:id="@+id/colorPicker"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_gravity="center"
+                android:layout_weight="0.8" />
+        </RelativeLayout>
+
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Résultat:"
-            />
+            android:orientation="horizontal"
+            android:weightSum="1">
+
+        </LinearLayout>
+
         <com.example.app.GeometryLayer
             android:layout_height="match_parent"
             android:layout_width="match_parent"

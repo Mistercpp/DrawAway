@@ -11,28 +11,26 @@ public class Circle extends Figure {
 
     int _radius;
     int _x, _y;
+    Paint _myPaint;
 
-    public Circle(){
-        this(100,40,0);
+    public Paint get_myPaint() {
+        return _myPaint;
     }
 
-    public Circle(int x, int y, int radius) {
+    public void set_myPaint(Paint _myPaint) {
+        this._myPaint = _myPaint;
+    }
+
+    public Circle(int x, int y, int radius,Paint myPaint) {
         this._radius = radius;
         this._x = x;
         this._y = y;
+        this._myPaint = myPaint;
     }
-    @Override
-    public void create(Canvas canvas, Paint paint) {
-        //canvas.drawColor(Color.CYAN);
-        Paint p = new Paint();
-        // smooths
-        p.setAntiAlias(true);
-        p.setColor(Color.RED);
-        p.setStyle(Paint.Style.STROKE);
-        p.setStrokeWidth(4.5f);
-        // opacity
-        //p.setAlpha(0x80); //
-        canvas.drawCircle(this.getX(), this.getY(), this.getRadius(), p);
+
+
+    public void create(Canvas canvas) {
+        canvas.drawCircle(this.getX(), this.getY(), this.getRadius(), this.get_myPaint());
     }
 
     public int getRadius() {

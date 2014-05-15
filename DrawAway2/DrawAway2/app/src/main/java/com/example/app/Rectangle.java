@@ -9,28 +9,25 @@ import android.util.Log;
  * Created by Hor on 30/04/14.
  */
 public class Rectangle extends Figure {
-    @Override
-    public void create(Canvas canvas, Paint myPaint) {
 
-        myPaint.setColor(Color.RED);
-        myPaint.setStrokeWidth(3);
-        myPaint.setStyle(Paint.Style.STROKE);
-        Log.i(this.getClass().getName(), "onDraw...");
-
-        canvas.drawRect(this.getX(),this.getY(),this.getX() + this.getLargeur(),this.getY() + this.getHauteur(),myPaint);
-        Log.i(this.getClass().getName(),"r : "+ this.getLargeur() + " x "+this.getHauteur());
-
-    }
-    public Rectangle()
-    {
-        this(100,50,50,50);
+    public void create(Canvas canvas) {
+        canvas.drawRect(this.getX(), this.getY(), this.getX() + this.getLargeur(), this.getY() + this.getHauteur(), this.get_myPaint());
     }
 
-    public Rectangle(int largeur, int hauteur, int x, int y) {
+    public Paint get_myPaint() {
+        return _myPaint;
+    }
+
+    public void set_myPaint(Paint _myPaint) {
+        this._myPaint = _myPaint;
+    }
+
+    public Rectangle(int largeur, int hauteur, int x, int y,Paint myPaint) {
         this._largeur = largeur;
         this._hauteur = hauteur;
         this._x = x;
         this._y = y;
+        this._myPaint = myPaint;
     }
 
     public int getLargeur() {
@@ -59,5 +56,6 @@ public class Rectangle extends Figure {
 
     int _largeur, _hauteur;
     int _x, _y;
+    Paint _myPaint;
 
 }
