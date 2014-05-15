@@ -1,0 +1,72 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.app.Accueil"
+    tools:ignore="MergeRootFrame" >
+
+
+
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:orientation="vertical"
+        android:background="#606060"
+        >
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            >
+            <TextView
+                android:id="@+id/custom_font"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Draw Away "
+                android:textSize="50sp"
+                android:textStyle="bold"
+                android:textColor="#000080"
+                android:layout_marginLeft="50dip"
+                android:layout_marginRight="50dip"
+                android:gravity="center"
+                />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="55sp"
+            >
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            >
+            <Button
+                android:id="@+id/application"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="APPLICATION"
+                android:layout_weight="1"
+                android:layout_marginLeft="25dip"
+                android:layout_marginRight="25dip"
+                android:textSize="25sp"
+                android:background="#778899"
+                android:onClick="DrawAppli" />
+            <Button
+                android:id="@+id/quit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="QUITTER"
+                android:layout_weight="1"
+                android:layout_marginLeft="25dip"
+                android:layout_marginRight="25dip"
+                android:textSize="25sp"
+                android:background="#778899"
+                android:onClick="Quitter" />
+        </LinearLayout>
+    </LinearLayout>
+</FrameLayout>

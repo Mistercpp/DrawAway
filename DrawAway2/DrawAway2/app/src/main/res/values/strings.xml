@@ -11,5 +11,6 @@
         <item>Triangle</item>
     </string-array>
 
+    <string name="title_activity_accueil">Accueil</string>
 
 </resources>
