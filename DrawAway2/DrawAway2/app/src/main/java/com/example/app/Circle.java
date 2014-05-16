@@ -23,8 +23,8 @@ public class Circle extends Figure {
 
     public Circle(int x, int y, int radius,Paint myPaint) {
         this._radius = radius;
-        this._x = x;
-        this._y = y;
+        setX(x);
+        setY(y);
         this._myPaint = myPaint;
     }
 
@@ -37,12 +37,4 @@ public class Circle extends Figure {
         return _radius;
     }
 
-
-    public int getX() {
-        return _x;
-    }
-
-    public int getY() {
-        return _y;
-    }
 }

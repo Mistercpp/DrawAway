@@ -25,9 +25,11 @@ public class Rectangle extends Figure {
     public Rectangle(int largeur, int hauteur, int x, int y,Paint myPaint) {
         this._largeur = largeur;
         this._hauteur = hauteur;
-        this._x = x;
-        this._y = y;
+
         this._myPaint = myPaint;
+
+        setX(x);
+        setY(y);
     }
 
     public int getLargeur() {
@@ -46,16 +48,9 @@ public class Rectangle extends Figure {
         this._hauteur = hauteur;
     }
 
-    public int getX() {
-        return _x;
-    }
 
-    public int getY() {
-        return _y;
-    }
 
     int _largeur, _hauteur;
-    int _x, _y;
     Paint _myPaint;
 
 }

@@ -3,6 +3,7 @@
     android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/crump2"
     tools:context="com.example.app.MainActivity"
     tools:ignore="MergeRootFrame" >
     <LinearLayout
@@ -12,6 +13,7 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
+            android:background="@drawable/menu3"
             android:layout_height="153dp">
 
             <TextView
@@ -64,7 +66,9 @@
                 android:id="@+id/spin"
                 android:layout_below="@+id/largeur"
                 android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true" />
+                android:layout_alignParentStart="true"
+                android:visibility="visible"
+                android:focusable="false" />
 
             <Button
                 android:id="@+id/valider"
@@ -74,8 +78,7 @@
                 android:onClick="DrawFigure"
                 android:layout_weight="1.67"
                 android:layout_below="@+id/colorPicker"
-                android:layout_toRightOf="@+id/spin"
-                android:background="#27ff15" />
+                android:layout_toRightOf="@+id/spin" />
 
             <Button
                 android:layout_width="100dp"
@@ -102,7 +105,6 @@
                 android:text="Supprimer"
                 android:id="@+id/buttonSup"
                 android:onClick="SuprFigure"
-                android:background="@android:color/holo_red_light"
                 android:layout_alignParentTop="true"
                 android:layout_alignLeft="@+id/raz"
                 android:layout_alignStart="@+id/raz" />

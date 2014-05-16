@@ -22,9 +22,6 @@ public class Triangle extends Figure {
         canvas.drawPath(tri, this.get_myPaint());
 
     }
-
-    int _x;
-    int _y;
     int _base;
     int _hauteur;
     Paint _myPaint;
@@ -39,8 +36,8 @@ public class Triangle extends Figure {
     }
 
     public Triangle(int x, int y,int base,int hauteur,Paint myPaint){
-        _x = x;
-        _y = y;
+        setX(x);
+        setY(y);
         _base = base;
         _hauteur = hauteur;
         this._myPaint = myPaint;

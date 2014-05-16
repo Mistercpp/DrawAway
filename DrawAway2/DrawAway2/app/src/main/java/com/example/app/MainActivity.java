@@ -189,14 +189,16 @@ public class MainActivity extends ActionBarActivity {
                         else if (action==MotionEvent.ACTION_UP)
                         {
 
+
+
+                        }
+                        else if (action==MotionEvent.ACTION_MOVE)
+                        {
                             //Pour le déplacement de la figure la plus proche
                             if(boolSupr!=true && boolDessin!=true){
-                                //Figure TMP = new Rectangle(100,100,(int)event.getX(),(int)event.getY(),new Paint());
-                                Figure TMP = figureEnCour;
-                                //System.out.println("toto "+figureEnCour.getX());
+                                Figure TMP =  figureEnCour;
 
-
-
+                                System.out.println(TMP.getX()+" "+TMP.getY());
 
                                 TMP.setX((int) event.getX());
                                 TMP.setY((int) event.getY());
@@ -209,11 +211,12 @@ public class MainActivity extends ActionBarActivity {
 
                                 //figureEnCour = figureTemp;
                                 calque.addFigure(TMP);
+
                             }
 
-                        }
-                        else if (action==MotionEvent.ACTION_MOVE)
-                        {
+                            //Pour rotation
+                            //Point.x = Doigt.x + cos(rotation <- radian) * distance
+                            //Point.y = Doigt.y + sin(rotation <-radian aussi) * distance
 
                         }
 
