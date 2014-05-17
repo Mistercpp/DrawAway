@@ -1,5 +1,6 @@
 package com.example.app;
 
+import android.app.Activity;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
@@ -14,13 +15,15 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.os.Bundle;
+import android.view.Menu;
 import android.widget.TextView;
 import android.widget.Spinner;
 import android.view.View.OnClickListener;
 import android.widget.Toast;
 
 
-public class MainActivity extends ActionBarActivity {
+public class MainActivity extends Activity {
     GeometryLayer calque;
     String figure;
     Spinner listForm = null;
@@ -34,6 +37,9 @@ public class MainActivity extends ActionBarActivity {
 
     private Figure figureEnCour;
     public Figure figureTemp;
+
+
+
 
     //Variable boite de dialogue des couleurs
     private ColorPicker colorPicker;
@@ -96,6 +102,8 @@ public class MainActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+
+
         //Boite de dialogue des couleur
         colorPicker = (ColorPicker) findViewById(R.id.colorPicker);
 
@@ -118,8 +126,8 @@ public class MainActivity extends ActionBarActivity {
         //Calque de la vue
         calque  = (GeometryLayer)findViewById(R.id.calque_dessin);
 
-       //initialize the array of figures
-       initAvailableForms();
+        //initialize the array of figures
+        initAvailableForms();
 
         //Initialisation des evenements
         final View touchView = findViewById(R.id.calque_dessin);
@@ -246,9 +254,10 @@ public class MainActivity extends ActionBarActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        
+
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.main, menu);
+
+        getMenuInflater().inflate(R.menu.accueil, menu);
         return true;
     }
 

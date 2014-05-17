@@ -1,5 +1,7 @@
 package com.example.app;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.graphics.Typeface;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBar;
@@ -11,25 +13,30 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.os.Build;
+import android.widget.Button;
 import android.widget.TextView;
 
-public class Accueil extends ActionBarActivity {
+public class Accueil extends Activity {
 
     GeometryLayer calque1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        TextView texteView = (TextView) findViewById(R.id.custom_font);
-        Typeface font = Typeface.createFromAsset(getAssets(), "comic.ttf");
-        texteView.setTypeface(font);
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_accueil);
 
-        if (savedInstanceState == null) {
-            getSupportFragmentManager().beginTransaction()
-                    .add(R.id.container, new PlaceholderFragment())
-                    .commit();
-        }
+        final Button buttonAccueil = (Button) findViewById(R.id.application);
+        buttonAccueil.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Accueil.this, MainActivity.class);
+                startActivity(intent);
+            }
+
+
+        });
+
     }
 
 
